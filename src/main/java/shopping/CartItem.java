@@ -1,5 +1,7 @@
 package shopping;
 
+import static java.math.BigDecimal.valueOf;
+
 import java.math.BigDecimal;
 
 public class CartItem {
@@ -19,9 +21,16 @@ public class CartItem {
 		return product.getPrice();
 	}
 	
+	public CurrencyAmount getPrice() {
+		return new CurrencyAmount(getUnitPrice()).multiply(quantity);
+	}
+
 	public CartItem(Product product, int quantity) {
 		this.product = product;
 		this.quantity = quantity;
 	}
-
+	
+	public boolean isAssociatedWith(Product product) {
+		return this.product.equals(product);
+	}
 }
