@@ -4,6 +4,8 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static shopping.CurrencyAmount.ZERO;
 
+import java.io.IOException;
+
 import org.junit.Test;
 
 public class CartTest {
@@ -46,5 +48,17 @@ public class CartTest {
 		underTest.addProduct(thingTwo, 1);
 
 		assertThat(underTest.getPrice(), is(new CurrencyAmount("84.11")));
+	}
+	
+	@Test(expected=IOException.class)
+	public void shouldAlwaysFailWhenWriting() throws IOException {
+		Cart underTest = new Cart();
+		underTest.addProduct(new Product(ZERO), 42);
+		underTest.writeToFile();
+	}
+	
+	@Test
+	public void somethingIsUnsupported() {
+		
 	}
 }

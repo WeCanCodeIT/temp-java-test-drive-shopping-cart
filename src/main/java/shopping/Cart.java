@@ -1,5 +1,6 @@
 package shopping;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -26,6 +27,12 @@ public class Cart {
 			total = total.add(item.getPrice());
 		}
 		return total;
+	}
+
+	public void writeToFile() throws IOException {
+		for (CartItem item: cartItems) {
+			item.writeToFile();
+		}
 	}
 
 }
