@@ -1,10 +1,8 @@
 package shopping;
 
-import static java.math.BigDecimal.ZERO;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-
-import java.math.BigDecimal;
+import static shopping.CurrencyAmount.ZERO;
 
 import org.junit.Test;
 
@@ -35,7 +33,7 @@ public class CartTest {
 		Product thingOne = new Product("42.00");
 		underTest.addProduct(thingOne, 2);
 
-		assertThat(underTest.getPrice(), is(new BigDecimal("84.00")));
+		assertThat(underTest.getPrice(), is(new CurrencyAmount("84.00")));
 	}
 
 	@Test
@@ -47,6 +45,6 @@ public class CartTest {
 		Product thingTwo = new Product("0.11");
 		underTest.addProduct(thingTwo, 1);
 
-		assertThat(underTest.getPrice(), is(new BigDecimal("84.11")));
+		assertThat(underTest.getPrice(), is(new CurrencyAmount("84.11")));
 	}
 }

@@ -1,9 +1,5 @@
 package shopping;
 
-import static java.math.BigDecimal.valueOf;
-
-import java.math.BigDecimal;
-
 public class CartItem {
 
 	private Product product;
@@ -17,12 +13,12 @@ public class CartItem {
 		return quantity;
 	}
 	
-	public BigDecimal getUnitPrice() {
+	public CurrencyAmount getUnitPrice() {
 		return product.getPrice();
 	}
 	
 	public CurrencyAmount getPrice() {
-		return new CurrencyAmount(getUnitPrice()).multiply(quantity);
+		return getUnitPrice().multiply(quantity);
 	}
 
 	public CartItem(Product product, int quantity) {

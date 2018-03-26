@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
-import java.math.BigDecimal;
-
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
@@ -41,5 +39,15 @@ public class CurrencyAmountTest {
 		
 		assertThat(result, is(not(sameInstance(underTest))));
 		assertThat(result, isCurrencyAmount("14.00"));
+	}
+	
+	@Test
+	public void shouldAdd() {
+		CurrencyAmount first = new CurrencyAmount("8.50");
+		CurrencyAmount second = new CurrencyAmount("9.36");
+		
+		CurrencyAmount result = first.add(second);
+		
+		assertThat(result, isCurrencyAmount("17.86"));
 	}
 }

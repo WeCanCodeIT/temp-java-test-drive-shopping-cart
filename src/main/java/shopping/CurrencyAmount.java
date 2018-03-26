@@ -7,6 +7,8 @@ import java.math.BigDecimal;
  */
 public class CurrencyAmount {
 
+	public static final CurrencyAmount ZERO = new CurrencyAmount("0.00");
+
 	private final BigDecimal amount;
 
 	public CurrencyAmount(String amount) {
@@ -47,6 +49,15 @@ public class CurrencyAmount {
 			return false;
 		}
 		return true;
+	}
+
+	public CurrencyAmount add(CurrencyAmount other) {
+		return new CurrencyAmount(amount.add(other.amount));
+	}
+
+	@Override
+	public String toString() {
+		return "CurrencyAmount: " + amount;
 	}
 
 }

@@ -1,6 +1,5 @@
 package shopping;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -21,8 +20,8 @@ public class Cart {
 		return false;
 	}
 
-	public BigDecimal getPrice() {
-		BigDecimal total = new BigDecimal("0.00");
+	public CurrencyAmount getPrice() {
+		CurrencyAmount total = CurrencyAmount.ZERO;
 		for (CartItem item: cartItems) {
 			total = total.add(item.getPrice());
 		}

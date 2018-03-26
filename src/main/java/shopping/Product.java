@@ -1,20 +1,18 @@
 package shopping;
 
-import java.math.BigDecimal;
-
 public class Product {
 
-	private BigDecimal price;
+	private CurrencyAmount price;
 
-	public Product(BigDecimal price) {
+	public Product(CurrencyAmount price) {
 		this.price = price;
 	}
 
 	public Product(String price) {
-		this(new BigDecimal(price));
+		this(new CurrencyAmount(price));
 	}
 
-	public BigDecimal getPrice() {
+	public CurrencyAmount getPrice() {
 		return price;
 	}
 
